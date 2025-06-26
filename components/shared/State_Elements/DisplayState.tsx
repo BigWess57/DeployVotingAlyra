@@ -183,7 +183,7 @@ const DisplayState = () => {
                 <Button className="bg-orange-600" onClick={changeState} disabled={!isAdmin || state?.currentState == WorkflowStatus.VotesTallied}>Go to next State</Button>
             </div>
 
-            <CurrentTransaction hash={hash} isConfirming={isConfirming} isSuccess={isSuccess} errorConfirmation={errorConfirmation} error={error} />
+            <CurrentTransaction hash={hash} isConfirming={isConfirming} isSuccess={isSuccess} errorConfirmation={errorConfirmation} error={error ?? null} />
         </>
     )
 }

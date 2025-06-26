@@ -15,7 +15,7 @@ type CurrentTransactionProps = {
   isConfirming?: boolean;
   isSuccess?: boolean;
   errorConfirmation?: WaitForTransactionReceiptErrorType | null;
-  error?: WriteContractErrorType | null | undefined;
+  error?: unknown;
 };
 
 const CurrentTransaction = ({
@@ -82,16 +82,16 @@ const CurrentTransaction = ({
             <AlertCircleIcon className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>
-                {(errorConfirmation).shortMessage || errorConfirmation.message}
+                {errorConfirmation.message}
             </AlertDescription>
           </Alert>
         }
-        {error && (
+        {error as WriteContractErrorType && (
           <Alert className="mb-4 bg-red-400">
             <AlertCircleIcon className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>
-                {(error).shortMessage || error.message}
+                {(error as WriteContractErrorType).message}
             </AlertDescription>
           </Alert>)
         }
